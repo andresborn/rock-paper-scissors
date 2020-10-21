@@ -3,40 +3,37 @@
 <head></head>
 <body>
 <script>
-// Function of the computer playing Rock, Paper, Scissors
+// Rock, Paper, Scissors Game
+
+// Function of the computer playing
 function computerPlay() {
-// Set variables of rock, paper, scissors with their values
+
     const rock = "rock";
     const paper = "paper";
     const scissors = "scissors";
 
-// Create an array containing the variables: rock, paper, scissors
     const RPSArray = [rock, paper, scissors]
 
-// Create a function that selects a random value of the array and Assign that value to a variable
+    // Selects a random value of the array
     const randomSelection = RPSArray[Math.floor(Math.random() * RPSArray.length)];
 
-// Return the value of the variable
     return randomSelection;
 }
 
-// Create an input for the player
+// Create an input for the player(lowercase/insensitive) and computer selection
 const playerPrompt = prompt("Choose: Rock, Paper or Scissors",);
-
-// Assign it to a variable called playerSelection and make it case insenstive ie. make it lowercase
 const playerSelection = playerPrompt.toLowerCase();
-
-// Create computer selection
 const computerSelection = computerPlay();
+
 // Create function that plays a round between player and computer
 function playRound(playerSelection, computerSelection) {
 
-// Create Win, Lose and tie messages variables for function
+    // Create Win, Lose and tie messages variables for function
     let youWinMessage = `You win! ${playerSelection} beats ${computerSelection}`;
     let youLoseMessage = `You lose! ${computerSelection} beats ${playerSelection}`;
     let tieMessage = "It's a tie."
 
-// Player wins
+        // Player wins
     
         if (
         (playerSelection === "paper" && computerSelection === "rock")
@@ -47,7 +44,7 @@ function playRound(playerSelection, computerSelection) {
         ) return {
             youWinMessage
         }; 
-// Player loses
+        // Player loses
 
         else if (
             (playerSelection === "paper" && computerSelection === "scissors")
@@ -58,11 +55,12 @@ function playRound(playerSelection, computerSelection) {
         ) return {
             youLoseMessage
         };
-// Game is a tie
+        // Game is a tie
         else {
             return tieMessage
         };
     }
+
 // Create a function for a game of 5 rounds
 function game() {
     playRound(playerSelection, computerSelection);
@@ -70,17 +68,8 @@ function game() {
     playRound(playerSelection, computerSelection);
     playRound(playerSelection, computerSelection);
     playRound(playerSelection, computerSelection);
-    return 
+    return console.log("Hello");
 }
-
-
-
-
-
-// Have function return "You lose, or you win Paper beats Scissor"
-
-
-
 </script>
 </body>
 </html>
