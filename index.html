@@ -23,15 +23,15 @@ function computerPlay() {
 // Create an input for the player(lowercase/insensitive) and computer selection
 const playerPrompt = prompt("Choose: Rock, Paper or Scissors",);
 const playerSelection = playerPrompt.toLowerCase();
-const computerSelection = computerPlay();
+let computerSelection = computerPlay();
 
 // Create function that plays a round between player and computer
 function playRound(playerSelection, computerSelection) {
 
     // Create Win, Lose and tie messages variables for function
-    let youWinMessage = `You win! ${playerSelection} beats ${computerSelection}`;
-    let youLoseMessage = `You lose! ${computerSelection} beats ${playerSelection}`;
-    let tieMessage = "It's a tie."
+let youWinMessage = `You win! ${playerSelection} beats ${computerSelection}`;
+let youLoseMessage = `You lose! ${computerSelection} beats ${playerSelection}`;
+let tieMessage = "It's a tie."
 
         // Player wins
     
@@ -62,13 +62,25 @@ function playRound(playerSelection, computerSelection) {
     }
 
 // Create a function for a game of 5 rounds
+// Count points for each win and lose
 function game() {
+    let gameCount = ""
+    for (let i = 0; i < 5; i++) {
     playRound(playerSelection, computerSelection);
-    playRound(playerSelection, computerSelection);
-    playRound(playerSelection, computerSelection);
-    playRound(playerSelection, computerSelection);
-    playRound(playerSelection, computerSelection);
-    return console.log("Hello");
+    
+    if (playRound() === youWinMessage) {
+        gameCount =+ gameCount++ 
+    } else if (playRound() === youLoseMessage) {
+        gameCount =+ gameCount--
+    } else {
+        gameCount = gameCount
+    }
+    }
+        if (gameCount > 0) {
+            console.log("You win!")
+        } else {
+            console.log("You lose!")
+        }
 }
 </script>
 </body>
