@@ -7,16 +7,15 @@
             const ROCK = "rock";
             const PAPER =  "paper";
             const SCISSORS = "scissors";
-
-            // function game() {5 times playRound()};
-
+            let playerScore = 0;
+            let computerScore = 0;
+            let youWinMessage = "You win!";
+            let youLoseMessage = "You lose.";
 
             function computerPlay() {
             const RPSArray = [ROCK, PAPER, SCISSORS]
-
             // Selects a random value of the array
             const randomSelection = RPSArray[Math.floor(Math.random() * RPSArray.length)];
-
                 return randomSelection;
             }
             //Play a round against the computer
@@ -24,6 +23,7 @@
                 computerSelection = computerPlay();
                 playerSelection = prompt("Choose: Rock, Paper or Scissors").toLowerCase();
                 let result;
+                
 
                     if (playerSelection === computerSelection) {
                         result = "It's a tie. Try again!";
@@ -32,30 +32,23 @@
                     (playerSelection === "rock" && computerSelection === "scissors")
                     || 
                     (playerSelection === "scissors" && computerSelection === "paper") ) {
-                        result = `You win! ${playerSelection} beats ${computerSelection}`;
+                        result = youWinMessage + " " + playerSelection + " beats " + computerSelection;
+                        playerScore++;
                     } else {
-                        result = `You lose! ${computerSelection} beats ${playerSelection}`;
+                        result = youLoseMessage + " " + computerSelection + " beats " + playerSelection;
+                        computerScore++;
                     }
                 return result;
                 }
             
-
+            
             // Play 5 rounds and display outcome
             function game() {
-                let score;
-
-                for (let i = 0; i < 5; i++){
+                for (let i = 0; i < 5; i++) {
                     playRound();
-                    if (playRound() == `You win! ${playerSelection} beats ${computerSelection}`) {
-                        score += score++;
-                    } else if (playRound == `You lose! ${computerSelection} beats ${playerSelection}`) {
-                        score += score--;
-                    } else {
-                        score = score;
-                    }
-                } 
-                if (score > 0) {
-                return console.log("You win!")} else {return console.log("You lose.")}
+                }
+                if (playerScore > computerScore) {return `${youWinMessage} You won ${playerScore} times. The computer won only ${computerScore} times.`}
+                else {return `${youLoseMessage} You lost ${playerScore} times. The computer won only ${computerScore} times.`}
             }
 
         </script>
