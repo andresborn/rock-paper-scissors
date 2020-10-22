@@ -1,87 +1,63 @@
 <!DOCTYPE html>
 <html>
-<head></head>
-<body>
-<script>
-// Rock, Paper, Scissors Game
+    <head>
+    </head>
+    <body>
+        <script>
+            const ROCK = "rock";
+            const PAPER =  "paper";
+            const SCISSORS = "scissors";
 
-// Function of the computer playing
-function computerPlay() {
+            // function game() {5 times playRound()};
 
-    const rock = "rock";
-    const paper = "paper";
-    const scissors = "scissors";
 
-    const RPSArray = [rock, paper, scissors]
+            function computerPlay() {
+            const RPSArray = [ROCK, PAPER, SCISSORS]
 
-    // Selects a random value of the array
-    const randomSelection = RPSArray[Math.floor(Math.random() * RPSArray.length)];
+            // Selects a random value of the array
+            const randomSelection = RPSArray[Math.floor(Math.random() * RPSArray.length)];
 
-    return randomSelection;
-}
+                return randomSelection;
+            }
+            //Play a round against the computer
+            function playRound(playerSelection, computerSelection) {
+                computerSelection = computerPlay();
+                playerSelection = prompt("Choose: Rock, Paper or Scissors").toLowerCase();
+                let result;
 
-// Create an input for the player(lowercase/insensitive) and computer selection
-const playerPrompt = prompt("Choose: Rock, Paper or Scissors",);
-const playerSelection = playerPrompt.toLowerCase();
-let computerSelection = computerPlay();
+                    if (playerSelection === computerSelection) {
+                        result = "It's a tie. Try again!";
+                    } else if ( (playerSelection === "paper" && computerSelection === "rock")
+                    ||
+                    (playerSelection === "rock" && computerSelection === "scissors")
+                    || 
+                    (playerSelection === "scissors" && computerSelection === "paper") ) {
+                        result = `You win! ${playerSelection} beats ${computerSelection}`;
+                    } else {
+                        result = `You lose! ${computerSelection} beats ${playerSelection}`;
+                    }
+                return result;
+                }
+            
 
-// Create function that plays a round between player and computer
-function playRound(playerSelection, computerSelection) {
+            // Play 5 rounds and display outcome
+            function game() {
+                let score;
 
-    // Create Win, Lose and tie messages variables for function
-let youWinMessage = `You win! ${playerSelection} beats ${computerSelection}`;
-let youLoseMessage = `You lose! ${computerSelection} beats ${playerSelection}`;
-let tieMessage = "It's a tie."
+                for (let i = 0; i < 5; i++){
+                    playRound();
+                    if (playRound() == `You win! ${playerSelection} beats ${computerSelection}`) {
+                        score += score++;
+                    } else if (playRound == `You lose! ${computerSelection} beats ${playerSelection}`) {
+                        score += score--;
+                    } else {
+                        score = score;
+                    }
+                } 
+                if (score > 0) {
+                return console.log("You win!")} else {return console.log("You lose.")}
+            }
 
-        // Player wins
-    
-        if (
-        (playerSelection === "paper" && computerSelection === "rock")
-        ||
-        (playerSelection === "rock" && computerSelection === "scissors")
-        || 
-        (playerSelection === "scissors" && computerSelection === "paper")
-        ) return {
-            youWinMessage
-        }; 
-        // Player loses
-
-        else if (
-            (playerSelection === "paper" && computerSelection === "scissors")
-        ||
-        (playerSelection === "rock" && computerSelection === "paper")
-        || 
-        (playerSelection === "scissors" && computerSelection === "rock")
-        ) return {
-            youLoseMessage
-        };
-        // Game is a tie
-        else {
-            return tieMessage
-        };
-    }
-
-// Create a function for a game of 5 rounds
-// Count points for each win and lose
-function game() {
-    let gameCount = ""
-    for (let i = 0; i < 5; i++) {
-    playRound(playerSelection, computerSelection);
-    
-    if (playRound() === youWinMessage) {
-        gameCount =+ gameCount++ 
-    } else if (playRound() === youLoseMessage) {
-        gameCount =+ gameCount--
-    } else {
-        gameCount = gameCount
-    }
-    }
-        if (gameCount > 0) {
-            console.log("You win!")
-        } else {
-            console.log("You lose!")
-        }
-}
-</script>
-</body>
+        </script>
+    </body>
 </html>
