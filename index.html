@@ -18,10 +18,22 @@
             const randomSelection = RPSArray[Math.floor(Math.random() * RPSArray.length)];
                 return randomSelection;
             }
+
+            function playerPlay() {
+                let option = prompt("Choose: Rock, Paper or Scissors").toLowerCase();
+                return option
+            }
+            
+
+            // prompt selection
+            // if player does not choose a correct answer, ask again
+            // else, return the input
+
+
             //Play a round against the computer
             function playRound(playerSelection, computerSelection) {
                 computerSelection = computerPlay();
-                playerSelection = prompt("Choose: Rock, Paper or Scissors").toLowerCase();
+                playerSelection = playerPlay();
                 let result;
                 
 
@@ -50,6 +62,9 @@
                 if (playerScore > computerScore) {return `${youWinMessage} You won ${playerScore} times. The computer won only ${computerScore} times.`}
                 else {return `${youLoseMessage} You lost ${playerScore} times. The computer won only ${computerScore} times.`}
             }
+
+            // Initial alert to play
+            alert("Hello! This is a console-based Rock, Paper and Scissors game. You must open your console to play the game. Go to View, then Developer and select JavaScript Console if using Chrome. If using Firefox, go to Tools, then Web Developer and select Web Console. Type game() to play 5 rounds in a row.")
 
         </script>
     </body>
